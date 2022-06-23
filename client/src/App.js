@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import Profile from './pages/Profile';
-import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Majors from './pages/Majors';
@@ -12,7 +11,9 @@ import Requirements from './FiveDetails/Requirements';
 import Cooking from './FiveDetails/Cooking';
 import SomeoneToHelp from './FiveDetails/SomeOneToHelp';
 import Teacher from './FiveDetails/Teacher';
-
+import Qualification from './Profile_Buttons/Qualification';
+import Signed from './Profile_Buttons/Signed';
+import Contact from './Profile_Buttons/Contact';
 
 import {
   BrowserRouter as Router,
@@ -28,7 +29,6 @@ function App() {
       <Routes>
         <Route path="/Home" element={<Home/>}></Route>
         <Route path="/Profile" element={<Profile/>}></Route>
-        <Route path="/Contact" element={<Contact/>}></Route>
         <Route path="/majors/:name" element={<Majors/>}></Route>
         <Route path="/details" element={<Details/>}></Route>
         <Route path="/details/map" element={<Map/>}></Route>
@@ -37,6 +37,9 @@ function App() {
         <Route path="/details/someonetohelp" element={<SomeoneToHelp/>}></Route>
         <Route path="/details/requirements" element={<Requirements/>}></Route>
         <Route path="/details/someonetohelp/teacher" element={<Teacher/>}></Route>
+        <Route path="/profile/contact" element={<Contact/>}></Route>
+        <Route path="/profile/signed" element={<Signed/>}></Route>
+        <Route path="/profile/qualification" element={<Qualification/>}></Route>
       </Routes>
     </Router>
   );
