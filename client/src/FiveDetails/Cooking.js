@@ -21,4 +21,4 @@ class Cooking extends Component {
     }
 }
 
-export default Cooking
+export default Cooking;

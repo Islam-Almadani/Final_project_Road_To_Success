@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { useState } from "react";
 
 
-function Details() {
+function Details(props) {
     const location = useLocation()
     const inforamtion = [
         { info: 'Courses', name: "courses", photo: "https://www.smartpassiveincome.com/wp-content/uploads/2020/04/How-to-Create-an-Online-Course.png" },
@@ -22,10 +22,11 @@ function Details() {
                     <div className='UniDiv' >
                         <img src={it.photo} className="image"></img>
                         <h2 className="h3">{it.info} </h2>
-                        <Link to={`/details/${it.name}`} className="details" id="major_div">Some Detalis</Link>
+                        <Link to={`/details/${it.name}`} state={location.state} className="details" id="major_div">Some Detalis</Link>
                     </div>
                 )
             })}
+            <button className='details_link' onClick={() => props.sign(location.state.majors.major)}>Sign To This Major</button>
         </div>
     )
 

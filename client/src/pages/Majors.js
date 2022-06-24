@@ -3,7 +3,6 @@ import '../App.css'
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 import { useState } from "react";
-
 function Majors() {
     const location = useLocation()
     const [inputText , setinputText] = useState("")
@@ -61,3 +60,11 @@ function Majors() {
 }
 
 export default Majors
+
+
+
+
+
+
+
+

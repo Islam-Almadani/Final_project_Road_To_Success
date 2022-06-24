@@ -70,6 +70,7 @@ nav {
   /* background-color: #b1bbca; */
   /* font-weight: bold; */
   font-size: 18px;
+  animation-name: homepage;
   border-bottom: #096387 2px solid;
 }
 
@@ -79,13 +80,14 @@ nav {
 }
 
 .UniDiv {
-float: left;
-padding: 10px;
-margin-left: 27px;
-margin-top: 30px;
-background-color: #096387;
-border-radius: 25px;
+  float: left;
+  padding: 10px;
+  margin-left: 27px;
+  margin-top: 30px;
+  background-color: #096387;
+  border-radius: 25px;
 }
+
 #teacher {
   text-align: center;
   margin-left: 135px;
@@ -107,7 +109,6 @@ border-radius: 25px;
 
 .details {
   border-width: 10px;
-  color: black;
   text-align: center;
   margin-left: 155px;
   color: #096387;
@@ -185,15 +186,20 @@ border-radius: 25px;
   font-size: 30px;
 }
 
-ul {
+.profile_details {
   list-style-type: none;
+  padding: 10px;
   text-align: left;
   font-size: 25px;
-  background-color: aquamarine;
+  color: white;
+  background-color: #096387;
   width: 50%;
   border-radius: 20px;
-  margin-left: 23.5%;
+  margin-left: 25%;
+}
 
+li {
+  text-align: center;
 }
 
 #Nav-image {
@@ -203,18 +209,7 @@ ul {
 }
 
 .Header {
-  text-align: center;
-  color: rgb(9 99 135);
   font-family: RTSFont !important;
-}
-
-#somehelp {
-  width: 300px;
-  height: inherit;
-  margin-left: 30px;
-  margin-top: 30px;
-}
-.teacher-header{
   margin-top: 50px;
   color: #096387;
   text-align: center;
@@ -223,41 +218,83 @@ ul {
   animation-direction: reverse;
   position: relative;
 }
-@keyframes example {
-  0%   {left:0px; top:0px;}
-  25%  {left:0px; right:0px;}
-  50%  {left:200px; right:200px;}
-  75%  {left:-200px; right:0px;}
-  100% {left:0px; right:0px;}
+
+#somehelp {
+  width: 300px;
+  height: inherit;
+  margin-left: 30px;
+  margin-top: 30px;
 }
-.teacher-img{
+
+.teacher-header {
+  margin-top: 50px;
+  color: #096387;
+  text-align: center;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-direction: reverse;
+  position: relative;
+}
+
+@keyframes example {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+
+  25% {
+    left: 0px;
+    right: 0px;
+  }
+
+  50% {
+    left: 200px;
+    right: 200px;
+  }
+
+  75% {
+    left: -200px;
+    right: 0px;
+  }
+
+  100% {
+    left: 0px;
+    right: 0px;
+  }
+}
+
+.teacher-img {
   width: 20%;
   border-radius: 100%;
   margin-left: 40%;
-  margin-right:40% ;
+  margin-right: 40%;
   border: #096387 3px dashed;
 }
-.teacher-email{
+
+.teacher-email {
   text-align: center;
   display: inline;
   font-weight: normal;
   color: #096387;
 }
-.teacher-emtitle{
+
+.teacher-emtitle {
   margin-left: 40%;
   margin-right: 10px;
-  display: inline-block ;
+  display: inline-block;
   font-weight: bold;
   color: #096387;
   margin-top: 10px;
 }
-#email{
+
+#email {
   margin-left: 42%;
   margin-bottom: 10px;
   color: #096387;
 
 }
-.teacher-p{
+
+.teacher-p {
   background-color: #096387;
   margin-left: 15%;
   margin-right: 15%;
@@ -267,27 +304,173 @@ ul {
   padding: 10px;
   color: white;
 }
-hr{
+
+hr {
   margin-right: 10%;
   margin-left: 10%;
 }
-.profile-button{
+
+.profile-button {
   text-decoration: none;
   color: white;
 }
-#profile-div{
+
+#profile-div {
   margin-left: 75px;
   margin-right: 75px;
   display: inline;
-  
-  }
-.profile-div-all{
-  width :100%;
+
+}
+
+.profile-div-all {
+  width: 100%;
   /* background-color: #751111; */
   text-align: center;
   font-size: 30px;
   height: 30px;
   /* padding-top: 10px ; */
   margin-bottom: 20px;
-  
-  }
+
+}
+
+#contact {
+  width: 280px;
+  height: inherit;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.UniDiv_2 {
+  float: left;
+  padding: 10px;
+  margin-left: 15px;
+  margin-top: 5px;
+  background-color: #096387;
+  border-radius: 25px;
+  width: 300px;
+  height: inherit;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.contact_img {
+  width: 70px;
+  height: inherit;
+  margin-left: 15px;
+}
+
+#contact_div {
+  align-items: center;
+  padding-left: 60px;
+}
+
+.input1 {
+  width: 60%;
+  padding: 12px 20px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+  border: 2px solid #096387;
+  border-radius: 4px;
+  box-sizing: border-box;
+  align-self: center;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  transition-duration: 0.3s;
+}
+
+.details_header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: xx-large;
+  font-family: revert;
+  margin-left: 40%;
+}
+
+.details_link {
+  border-width: 10px;
+  background-color: #096387;
+  color: white;
+  border: 2px solid #096387;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  transition-duration: 0.3s;
+  text-align: center;
+  margin-left: 46%;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.details_link:hover {
+  background-color: white;
+  color: #096387;
+  box-shadow: 0 10px 12px 0 rgba(66, 66, 66, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#Massage {
+  padding-bottom: 100px;
+}
+
+.Form {
+  padding: 10px;
+}
+
+#profile_header {
+  margin-left: 30%;
+  margin-right: 50px;
+}
+
+#profile_info {
+  text-align: center;
+  display: block;
+  margin-top: -40px;
+}
+
+.profile_div {
+  align-items: center;
+}
+#req_header {
+  margin-left: 15px;
+  margin-right: 50px;
+  color: white;
+}
+#req_info {
+  text-align: center;
+  display: block;
+  margin-top: -45px;
+  color: white;
+}
+.req_div{
+  background-color: #096387;
+  width: 80%;
+  border-radius: 10px;
+  margin-left: 10%;
+  height: 50px;
+  margin-top: 20px;
+  transition-duration: 0.3s;
+
+}
+.req_div:hover{
+  margin-left: 5%;
+  width: 90%;
+  height: 50px;
+  padding: 10px;
+  box-shadow: 0 10px 12px 0 rgba(66, 66, 66, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+Link{
+  transition-delay: 0.3s;
+}
+#sub{
+  font-family: RTSFont !important;
+  margin-top: 50px;
+  color: #096387;
+  text-align: center;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-direction: reverse;
+}
