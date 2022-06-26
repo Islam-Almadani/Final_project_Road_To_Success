@@ -42,23 +42,29 @@ body {
   color: #61dafb;
 }
 
-.navLinks {
-  width: 45%;
-  display: flex;
-  justify-content:
-    space-around;
-  align-items: center;
-  list-style: none;
-  font-size: 15px;
+.navdiv {
+  margin-left: 75%;
 }
 
+.Navlink {
+  color: #096387;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  padding: 2px;
+  border-radius: 2px;
+  font-size: 18px;
+  animation-name: homepage;
+  margin-left: 10px;
+  width: 50px;
+}
+
+#icons{
+  width: 50px;
+  height: inherit;
+}
 nav {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  min-height: 10vh;
-  background: #e1f8f8;
-  color: lightgrey;
 }
 
 .link {
@@ -67,8 +73,6 @@ nav {
   transition-duration: 0.3s;
   padding: 2px;
   border-radius: 2px;
-  /* background-color: #b1bbca; */
-  /* font-weight: bold; */
   font-size: 18px;
   animation-name: homepage;
   border-bottom: #096387 2px solid;
@@ -138,6 +142,9 @@ nav {
   margin-left: 10%;
   font-size: 20px;
   color: rgb(148, 146, 146);
+  background-image: url('https://cdn.discordapp.com/attachments/857012204775276594/990588792140345354/42-search-solid.gif');
+  background-position: 100px 120px;
+  background-repeat: no-repeat;
 }
 
 
@@ -155,6 +162,8 @@ nav {
   width: 25%;
   height: inherit;
   margin-left: 37.5%;
+  margin-top: 25px;
+  margin-bottom: 15px;
 }
 
 .UniDiv_1 {
@@ -204,8 +213,8 @@ li {
 
 #Nav-image {
   width: 80px;
-  height: inherit;
-  margin-left: -180px;
+    height: inherit;
+    margin-left: 20px;
 }
 
 .Header {
@@ -319,7 +328,21 @@ hr {
   margin-left: 75px;
   margin-right: 75px;
   display: inline;
+  background-color: #096387;
+  color: white;
+  border: #096387 3px solid;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 2px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
 
+#profile-div:hover {
+  background-color: white;
+  color: #096387;
+  font-weight: bold;
+  font-size: 23px;
 }
 
 .profile-div-all {
@@ -434,18 +457,21 @@ hr {
 .profile_div {
   align-items: center;
 }
+
 #req_header {
   margin-left: 15px;
   margin-right: 50px;
   color: white;
 }
+
 #req_info {
   text-align: center;
   display: block;
   margin-top: -45px;
   color: white;
 }
-.req_div{
+
+.req_div {
   background-color: #096387;
   width: 80%;
   border-radius: 10px;
@@ -455,17 +481,20 @@ hr {
   transition-duration: 0.3s;
 
 }
-.req_div:hover{
+
+.req_div:hover {
   margin-left: 5%;
   width: 90%;
   height: 50px;
   padding: 10px;
   box-shadow: 0 10px 12px 0 rgba(66, 66, 66, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-Link{
+
+Link {
   transition-delay: 0.3s;
 }
-#sub{
+
+#sub {
   font-family: RTSFont !important;
   margin-top: 50px;
   color: #096387;
@@ -473,4 +502,15 @@ Link{
   animation-name: example;
   animation-duration: 5s;
   animation-direction: reverse;
+}
+
+#cooking {
+  width: 40%;
+  margin-left: 30%;
+  border-radius: 10px;
+}
+
+#Tutorial_link {
+  margin-left: 44%;
+  font-size: 20px;
 }

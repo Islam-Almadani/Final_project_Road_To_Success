@@ -14,6 +14,10 @@ function Profile() {
         ]
         return (
             <div>
+                <div className="profile-div-all">
+                    <Link to={'/profile/signed'}  className="link" id="profile-div">Signed</Link>
+                    <Link to={'/profile/qualification'}  className="link" id="profile-div">Qualification</Link>
+                </div>
                 <img src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png' className="Profile_pic"></img>
                 {
                     details.map((it)=>{
@@ -25,11 +29,7 @@ function Profile() {
                         )
                     })
                 }
-                <div className="profile-div-all">
-                    <Link to={'/profile/signed'}  className="link" id="profile-div">Signed</Link>
-                    <Link to={'/profile/contact'}  className="link"id="profile-div">Contact</Link>
-                    <Link to={'/profile/qualification'}  className="link" id="profile-div">Qualification</Link>
-                </div>
+                
             </div>
         )
 }

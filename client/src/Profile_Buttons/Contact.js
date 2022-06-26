@@ -25,7 +25,7 @@ function Contact() {
         }, {
             name: 'Hadil Owda',
             facebook: 'https://www.facebook.com/profile.php?id=100008185053857',
-            image: 'https://cdn.discordapp.com/attachments/786946082444804106/989921216586473483/hadil1.png', // https://cdn.discordapp.com/attachments/786946082444804106/989920046501470208/289334048_833271768079021_7829297065157681710_n.jpg
+            image: 'https://cdn.discordapp.com/attachments/786946082444804106/989920046501470208/289334048_833271768079021_7829297065157681710_n.jpg', // 
             insta: 'https://www.instagram.com/hadil.owda/',
         },
     ]
@@ -49,7 +49,7 @@ function Contact() {
                     </div>
                 )
             })}
-            <h1 id="sub">Submition Form</h1>
+            <h1 id="sub">Submission Form</h1>
             <input type="text" className="input1" placeholder={`Your Name..`} />
             <input type="text" className="input1" placeholder={`Your Email..`} />
             <input type="text" className="input1" id='Massage' placeholder={`Massage..`} />

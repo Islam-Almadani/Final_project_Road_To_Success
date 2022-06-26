@@ -25,7 +25,7 @@ function Home() {
                 return el;
             }
             else {
-                return el.University.toLowerCase().includes(this.state.inputText)
+                return el.University.toLowerCase().includes(inputText)
             }
         })
         return (
@@ -38,6 +38,7 @@ function Home() {
                     label="Search"
                     className="input"
                     placeholder ="Search For University"
+                    img = "https://cdn.discordapp.com/attachments/857012204775276594/990585193234567218/8-account-outline4.gif"
                 />
                 {filteredData.map((it) => {
                     return (

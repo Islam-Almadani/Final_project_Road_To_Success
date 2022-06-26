@@ -5,63 +5,136 @@ import { useLocation } from 'react-router-dom'
 import { useState } from "react";
 function Majors() {
     const location = useLocation()
-    const [inputText , setinputText] = useState("")
+    const [inputText, setinputText] = useState("")
     function change(e) {
         setinputText(e.target.value.toLowerCase())
     }
-        const majors = [
-            { major: 'Computer science', photo: "https://engineering.buffalo.edu/content/engineering/computer-science-engineering/undergraduate/degrees-and-programs/ba-in-computer-science/_jcr_content/par/image.img.original.png/1560278866579.png" },
-            { major: 'Architecture', photo: "https://www.build-review.com/wp-content/uploads/2020/01/model-architecture.jpg" },
-            { major: 'Physics', photo: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg" },
-            { major: 'Mathematics', photo: "https://images.theconversation.com/files/207820/original/file-20180226-140213-yox11e.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip" },
-            { major: 'Mechanical engineering', photo: "https://muneerlyati.com/wp-content/uploads/2021/01/Mechanical-Engineering.jpg" },
-            { major: 'Music', photo: "https://media.istockphoto.com/vectors/music-note-icon-vector-illustration-vector-id1175435360?k=20&m=1175435360&s=612x612&w=0&h=1yoTgUwobvdFlNxUQtB7_NnWOUD83XOMZHvxUzkOJJs=" },
-            { major: 'theatre arts', photo: "https://vpa.uncg.edu/wp-content/uploads/2021/02/BeFunky-photo-6-2.jpg" },
-            { major: 'Management', photo: "https://previews.123rf.com/images/garagestock/garagestock1608/garagestock160807269/61461074-business-management-chart-with-keywords-and-icons-sketch.jpg" },
-            { major: 'Neuroscience', photo: "https://www.neuron-eranet.eu/wp-content/uploads/brain-AS_metamoreworks-209172059-400.jpg" }
-        ];
-        const filteredData = majors.filter((el) => {
-            if (inputText === '') {
-                return el;
-            }
-            else {
-                return el.major.toLowerCase().includes(inputText)
-            }
-        })
-        const university = location.state.University
+    const majors = [
+        {
+            major: 'Computer science', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'Maths',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fmath%3Ffbclid%3DIwAR2qatznPLw8_CCnxGGAz3jgdhoEhsVFbypbe4Yj9OAemLYn4LRTG1twmGk&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/277030846_1160706508011981_6274281590660679808_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=V9o1zNLiXUoAX9fsjes&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ6_Zp8ZId0PvRiQ2Rp47d8GCWpt8pHdDgg_7YNsfDjHg&oe=62D0FEAD" },
+                { course: 'Coding',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fcomputing%2Fcomputer-programming%3Ffbclid%3DIwAR0Qq9tBq-rjbUK4ifzLCIbvxrgom510zwJxFwJjyyjoOArvmHrehVj9iuY&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287233353_716198149444967_791495446055034152_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=X9iAgCulYQ8AX_dvysN&_nc_ht=scontent.fgza2-1.fna&oh=03_AVLN1W19eCJXAwgbSEQTPAjLeeg9N1fy9xWjH2_80-6bkQ&oe=62CEEB76" },
+                { course: 'Design Thinking',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Ddesign%2520thinking%26fbclid%3DIwAR2nQBbGmvWQf07I8S81OZBWUInYs7zb7NaL0oQ0_GJAplLgKsDkqfgvwuI&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287820771_1090031141894116_8288035771004059448_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=Zbg-Pqcgl_QAX9nmXWJ&_nc_ht=scontent.fgza2-3.fna&oh=03_AVIwrRba6Yw8NKF9eRYVgjqOS6T4qzQLcC2tFIVzzwL7mA&oe=62CDDE2F" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ],
+            photo: "https://engineering.buffalo.edu/content/engineering/computer-science-engineering/undergraduate/degrees-and-programs/ba-in-computer-science/_jcr_content/par/image.img.original.png/1560278866579.png"
+        },
+        {
+            major: 'Architecture', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'Maths',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fmath%3Ffbclid%3DIwAR2qatznPLw8_CCnxGGAz3jgdhoEhsVFbypbe4Yj9OAemLYn4LRTG1twmGk&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/277030846_1160706508011981_6274281590660679808_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=V9o1zNLiXUoAX9fsjes&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ6_Zp8ZId0PvRiQ2Rp47d8GCWpt8pHdDgg_7YNsfDjHg&oe=62D0FEAD" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://www.build-review.com/wp-content/uploads/2020/01/model-architecture.jpg"
+        },
+        {
+            major: 'Physics', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'Maths',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fmath%3Ffbclid%3DIwAR2qatznPLw8_CCnxGGAz3jgdhoEhsVFbypbe4Yj9OAemLYn4LRTG1twmGk&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/277030846_1160706508011981_6274281590660679808_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=V9o1zNLiXUoAX9fsjes&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ6_Zp8ZId0PvRiQ2Rp47d8GCWpt8pHdDgg_7YNsfDjHg&oe=62D0FEAD" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg"
+        },
+        {
+            major: 'Mathematics', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'Maths',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fmath%3Ffbclid%3DIwAR2qatznPLw8_CCnxGGAz3jgdhoEhsVFbypbe4Yj9OAemLYn4LRTG1twmGk&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/277030846_1160706508011981_6274281590660679808_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=V9o1zNLiXUoAX9fsjes&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ6_Zp8ZId0PvRiQ2Rp47d8GCWpt8pHdDgg_7YNsfDjHg&oe=62D0FEAD" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://images.theconversation.com/files/207820/original/file-20180226-140213-yox11e.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
+        },
+        {
+            major: 'Mechanical engineering', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'Maths',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fmath%3Ffbclid%3DIwAR2qatznPLw8_CCnxGGAz3jgdhoEhsVFbypbe4Yj9OAemLYn4LRTG1twmGk&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/277030846_1160706508011981_6274281590660679808_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=V9o1zNLiXUoAX9fsjes&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ6_Zp8ZId0PvRiQ2Rp47d8GCWpt8pHdDgg_7YNsfDjHg&oe=62D0FEAD" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://muneerlyati.com/wp-content/uploads/2021/01/Mechanical-Engineering.jpg"
+        },
+        {
+            major: 'Music', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'TOFEL', link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q",photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'French',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dfrench%2520language%26fbclid%3DIwAR1QJpfnfoZpYY1f5-YlxPwoQg3VkYdOSTf4-XILEIb2M5GjJuobsUyPrH4&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287749872_431761412092595_9153414802795822632_n.png?_nc_cat=105&ccb=1-7&_nc_sid=ae9488&_nc_ohc=Adgy_5UiTJAAX9j5FVs&tn=EYOPsbXZ7VlzjuVr&_nc_ht=scontent.fgza2-3.fna&oh=03_AVLMeq0BS7BFsJR3_qZkSfnU1O2WCq6D-NAPTNzw0A5BMA&oe=62D097F5" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://media.istockphoto.com/vectors/music-note-icon-vector-illustration-vector-id1175435360?k=20&m=1175435360&s=612x612&w=0&h=1yoTgUwobvdFlNxUQtB7_NnWOUD83XOMZHvxUzkOJJs="
+        },
+        {
+            major: 'Theatre arts', courses: [
+                { course: 'SAT', link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q",photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'French', link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dfrench%2520language%26fbclid%3DIwAR1QJpfnfoZpYY1f5-YlxPwoQg3VkYdOSTf4-XILEIb2M5GjJuobsUyPrH4&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q",photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287749872_431761412092595_9153414802795822632_n.png?_nc_cat=105&ccb=1-7&_nc_sid=ae9488&_nc_ohc=Adgy_5UiTJAAX9j5FVs&tn=EYOPsbXZ7VlzjuVr&_nc_ht=scontent.fgza2-3.fna&oh=03_AVLMeq0BS7BFsJR3_qZkSfnU1O2WCq6D-NAPTNzw0A5BMA&oe=62D097F5" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://vpa.uncg.edu/wp-content/uploads/2021/02/BeFunky-photo-6-2.jpg"
+        },
+        {
+            major: 'Management', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'Maths',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fmath%3Ffbclid%3DIwAR2qatznPLw8_CCnxGGAz3jgdhoEhsVFbypbe4Yj9OAemLYn4LRTG1twmGk&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/277030846_1160706508011981_6274281590660679808_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=V9o1zNLiXUoAX9fsjes&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ6_Zp8ZId0PvRiQ2Rp47d8GCWpt8pHdDgg_7YNsfDjHg&oe=62D0FEAD" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q",link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://previews.123rf.com/images/garagestock/garagestock1608/garagestock160807269/61461074-business-management-chart-with-keywords-and-icons-sketch.jpg"
+        },
+        {
+            major: 'Neuroscience', courses: [
+                { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
+                { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'First aid kit',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Falison.com%2Fcourse%2Fcpr-aed-and-first-aid%3Futm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_campaign%3DPPC_Tier-4_First-Click_Courses-_Exact_%26utm_adgroup%3DCourse-2968_CPR_-AED-and-First-Aid%26gclid%3DCjwKCAjwh-CVBhB8EiwAjFEPGbMseEmH2OKq2e5uceqp1B6nu0WUvcQ1nQL0DVgtJoq8V3kWb5r-6hoCh54QAvD_BwE%26fbclid%3DIwAR31Vw6N3XokUfCLcSUp_gEnvbrKOv5kPV8FwKiEDLx8Kd5JR6OyyzgIgHc&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287249661_1205578853605012_7378398810267899415_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=auaTjGGxQ4MAX_bAMEa&_nc_ht=scontent.fgza2-3.fna&oh=03_AVLkfTZcnA2A2M8t7AE0zHydS2UlX_k_l2bXqHGslTMcIQ&oe=62D08E45" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+            ], photo: "https://www.neuron-eranet.eu/wp-content/uploads/brain-AS_metamoreworks-209172059-400.jpg"
+        }
+    ];
+    const filteredData = majors.filter((el) => {
+        if (inputText === '') {
+            return el;
+        }
+        else {
+            return el.major.toLowerCase().includes(inputText)
+        }
+    })
+    const university = location.state.University
 
-        return (
-            <div>
-                <h1 className="Header">{location.state.University}</h1>
-                <input
-                    id="outlined-basic"
-                    onChange={change}
-                    variant="outlined"
-                    fullWidth
-                    label="Search"
-                    className="input"
-                    placeholder="Search For Major"
-                />
-                
-                {filteredData.map((it) => {
-                    const state1 = {majors : it , university : location.state.University}
+    return (
+        <div>
+            <h1 className="Header">{location.state.University}</h1>
+            <input
+                id="outlined-basic"
+                onChange={change}
+                variant="outlined"
+                fullWidth
+                label="Search"
+                className="input"
+                placeholder="Search For Major"
+            />
 
-                    return (
-                        <div className='UniDiv' >
-                            <img src={it.photo} className="image"></img>
-                            <h2 className="h3">{it.major} </h2>
-                            <Link to={'/details'} state={state1} className="details" id="major_div">Some Details</Link>
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    
+            {filteredData.map((it) => {
+                const state1 = { majors: it, university: location.state.University }
+
+                return (
+                    <div className='UniDiv' >
+                        <img src={it.photo} className="image"></img>
+                        <h2 className="h3">{it.major} </h2>
+                        <Link to={'/details'} state={state1} className="details" id="major_div">Some Details</Link>
+                    </div>
+                )
+            })}
+        </div>
+    )
+
 }
 
 export default Majors
-
-
 
 
 

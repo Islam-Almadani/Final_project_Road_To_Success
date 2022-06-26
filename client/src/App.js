@@ -14,6 +14,7 @@ import Teacher from './FiveDetails/Teacher';
 import Qualification from './Profile_Buttons/Qualification';
 import Signed from './Profile_Buttons/Signed';
 import Contact from './Profile_Buttons/Contact';
+import Tutorial from './FiveDetails/Tutorial';
 import { useState } from 'react';
 
 import {
@@ -43,9 +44,10 @@ function App() {
         <Route path="/details/someonetohelp" element={<SomeoneToHelp/>}></Route>
         <Route path="/details/requirements" element={<Requirements/>}></Route>
         <Route path="/details/someonetohelp/teacher" element={<Teacher/>}></Route>
-        <Route path="/profile/contact" element={<Contact/>}></Route>
-        <Route path="/profile/signed" element={<Signed signed-majors={data}/>}></Route>
+        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/profile/signed" element={<Signed name={data}/>}></Route>
         <Route path="/profile/qualification" element={<Qualification/>}></Route>
+        <Route path="/cooking/:name" element={<Tutorial/>}></Route>
       </Routes>
     </Router>
   );
