@@ -3,6 +3,10 @@ import '../App.css'
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 import { useState } from "react";
+import { db } from "../Firebase/Auth";
+import { onSnapshot, collection } from "firebase/firestore";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+
 
 function SomeoneToHelp(){
     const location = useLocation()
@@ -33,12 +37,20 @@ function SomeoneToHelp(){
                 photo: "https://libraries.mit.edu/img/staff-photos/barbaraw-100x100.jpg"
             }
         ];
-        const filteredData = people.filter((el) => {
+        const [recipes, setRecipes] = React.useState([]);
+    React.useEffect(
+      () =>
+        onSnapshot(collection(db, "SomeOneToHelp"), (snapshot) =>
+          setRecipes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        ),
+      []
+    );
+        const filteredData = recipes.filter((el) => {
             if (inputText === '') {
                 return el;
             }
             else {
-                return el.Name.toLowerCase().includes(inputText)
+                return el.name.toLowerCase().includes(inputText)
             }
         })
         return (
@@ -56,7 +68,7 @@ function SomeoneToHelp(){
                     return (
                         <div className='UniDiv_1' >
                             <img src={it.photo} className="image" id="somehelp"></img>
-                            <h2 className="h3">{it.Name} </h2>
+                            <h2 className="h3">{it.name} </h2>
                             <Link to={`/details/someonetohelp/teacher`} state={it} className="details" id="teacher">About</Link>
 
                         </div>

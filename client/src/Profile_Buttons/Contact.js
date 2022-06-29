@@ -53,7 +53,7 @@ function Contact() {
             <input type="text" className="input1" placeholder={`Your Name..`} />
             <input type="text" className="input1" placeholder={`Your Email..`} />
             <input type="text" className="input1" id='Massage' placeholder={`Massage..`} />
-            <input type="submit" value="Submit" className="details_link" /> 
+            <input type="submit" id="submit" value="Submit" className="details_link" /> 
         </div>
     )
 }

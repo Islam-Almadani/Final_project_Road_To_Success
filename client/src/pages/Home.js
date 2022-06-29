@@ -2,12 +2,23 @@ import { Component, useState } from "react";
 import React from "react";
 import '../App.css'
 import { Link } from "react-router-dom";
+import { db } from "../Firebase/Auth";
+import { onSnapshot, collection } from "firebase/firestore";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
 
 function Home() {
     const [inputText , setinputText] = useState("")
     function change(e) {
         setinputText(e.target.value.toLowerCase())
     }
+    const [recipes, setRecipes] = React.useState([]);
+    React.useEffect(
+      () =>
+        onSnapshot(collection(db, "Universities"), (snapshot) =>
+          setRecipes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        ),
+      []
+    );
 
         const universities = [
             { University: 'MIT University', photo: "https://www.science.org/do/10.1126/science.aav7395/abs/MIT_16x9_0.jpg" },
@@ -20,12 +31,12 @@ function Home() {
             { University: 'NUS University', photo: "https://world.yale.edu/sites/default/files/styles/yatw_790x400/public/basic_page_header_image/nus.jpg?itok=pQYQFbgF" },
             { University: 'princeton University', photo: "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_768,q_50,w_1024/v1/clients/princetonnj/princeton_university_main_building_at_front_gate_geraldine_scull_209cbd93-c4fc-4485-a274-66b4076c71e0.jpg" }
         ];
-        const filteredData = universities.filter((el) => {
+        const filteredData = recipes.filter((el) => {
             if (inputText === '') {
                 return el;
             }
             else {
-                return el.University.toLowerCase().includes(inputText)
+                return el.university.toLowerCase().includes(inputText)
             }
         })
         return (
@@ -44,7 +55,7 @@ function Home() {
                     return (
                         <div className='UniDiv'>
                             <img src={it.photo} className="image"></img>
-                            <h2 className="h3">{it.University} </h2>
+                            <h2 className="h3">{it.university} </h2>
                             <Link to={`/majors/${it.University}`} state={it} className="details">Majors</Link>
                         </div>
                     )

@@ -8,14 +8,14 @@ function Teacher(){
     const location = useLocation()
     return (
         <div>
-            <h1 className="teacher-header">{location.state.Name}</h1>
+            <h1 className="teacher-header">{location.state.name}</h1>
             <hr></hr>
             <img className="teacher-img" src={location.state.photo}/>
             <h3 className="teacher-emtitle" id="email"> Email :</h3>
-            <h3 className="teacher-email">{location.state.Email}</h3>
+            <h3 className="teacher-email">{location.state.email}</h3>
             <h3 className="teacher-emtitle"> Number :</h3>
-            <h3 className="teacher-email">{location.state.Number}</h3>
-            <p className="teacher-p">{location.state.Description}</p>
+            <h3 className="teacher-email">{location.state.number}</h3>
+            <p className="teacher-p">{location.state.description}</p>
 
         </div>
     )

@@ -2,15 +2,15 @@ import { Component } from "react";
 import React from "react";
 import '../App.css'
 import { Link } from "react-router-dom";
-
+import { useLocation } from 'react-router-dom'
 
 function Profile() {
+    const location = useLocation()
         const details = [
-            {header : 'Name' , info : 'Ameer Hassan'},
+            {header : 'Name' , info : 'test'},
             {header : 'Age' , info : '17'},
             {header : 'Country' , info : 'Palestine'},
-            {header : 'Whatsapp Num' , info : '+97259486559'},
-            {header : 'Email' , info : 'ameer_hassan2005@gmail.com'},
+            {header : 'Email' , info : 'test@gmail.com'},
         ]
         return (
             <div>
@@ -19,6 +19,7 @@ function Profile() {
                     <Link to={'/profile/qualification'}  className="link" id="profile-div">Qualification</Link>
                 </div>
                 <img src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png' className="Profile_pic"></img>
+                <hr></hr>
                 {
                     details.map((it)=>{
                         return(

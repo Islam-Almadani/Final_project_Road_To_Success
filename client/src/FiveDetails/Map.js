@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 class Map extends Component {
     render() {
         return (
-            <img src='http://schmidta.scripts.mit.edu/tabletop_workshop/map.png' className="map"/>
+            <div>
+                <h1 className="Header">Map</h1>
+                <hr></hr>
+                <img src='http://schmidta.scripts.mit.edu/tabletop_workshop/map.png' className="map" />
+            </div>
         )
     }
 }

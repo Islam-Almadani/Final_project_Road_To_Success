@@ -7,10 +7,10 @@ function Tutorial(){
     const location = useLocation()
     return(
         <div>
-            <h1 className="Header">{location.state.Name} </h1>
+            <h1 className="Header">{location.state.name} </h1>
             <img src={location.state.photo} className="teacher-img" id="cooking"></img>
-            <p className="teacher-p">{location.state.Details}</p>
-            <a  href={location.state.Video} target = "_blank" className="details_link" id="Tutorial_link"> Video Tutorial</a>
+            <p className="teacher-p">{location.state.details}</p>
+            <a  href={location.state.video} target = "_blank" className="details_link" id="Tutorial_link"> Video Tutorial</a>
         </div>
     )
 }

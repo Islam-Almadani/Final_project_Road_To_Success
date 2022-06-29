@@ -2,6 +2,10 @@ import { Component } from "react";
 import React from "react";
 import '../App.css'
 import { useLocation } from 'react-router-dom'
+import { db } from "../Firebase/Auth";
+import { onSnapshot, collection } from "firebase/firestore";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+
 
 function Requirements() {
     const location = useLocation()
@@ -16,10 +20,19 @@ function Requirements() {
         { name: 'Application essays', target: "GET 3 out of 5 in 5 essays at least" },
         { name: 'Files', target: "sending all the requested files" }
     ];
+    const [recipes, setRecipes] = React.useState([]);
+    React.useEffect(
+      () =>
+        onSnapshot(collection(db, "Requirement"), (snapshot) =>
+          setRecipes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        ),
+      []
+    );
     return (
         <>
             <h1 className="Header">Requirements for {location.state.majors.major}</h1>
-            {Requirement.map((it) => {
+            <hr></hr>
+            {recipes.map((it) => {
                 return (
                     <div className="req_div" >
                         <h2 className="teacher-emtitle" id="req_header">{it.name} :</h2>

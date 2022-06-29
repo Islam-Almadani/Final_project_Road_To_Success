@@ -17,6 +17,7 @@ function Qualification(){
     return (
         <>
             <h1 className="Header">Qualificatins</h1>
+            <hr></hr>
             {Qualificatins.map((it) => {
                 return (
                     <div className="req_div" >

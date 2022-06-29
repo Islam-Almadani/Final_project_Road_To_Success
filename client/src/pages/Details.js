@@ -3,6 +3,10 @@ import '../App.css'
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 import { useState } from "react";
+import { db } from "../Firebase/Auth";
+import { onSnapshot, collection } from "firebase/firestore";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+
 
 
 function Details(props) {
@@ -17,22 +21,32 @@ function Details(props) {
     var data = {
         university : location.state.university,
         major2 : location.state.majors.major,
-        photo : location.state.majors.photo
+        photo : location.state.majors.photo,
     }
+    const [recipes, setRecipes] = React.useState([]);
+    React.useEffect(
+      () =>
+        onSnapshot(collection(db, "FiveDetails"), (snapshot) =>
+          setRecipes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        ),
+      []
+    );
     console.log(location.state);
     return (
         <div>
             <h1 className="Header"> {location.state.university}  -  {location.state.majors.major}</h1>
-            {inforamtion.map((it) => {
+            <hr></hr>
+            <button className='details_link' onClick={() => props.sign(data)}>Sign To This Major</button>
+            {recipes.map((it) => {
                 return (
                     <div className='UniDiv' >
                         <img src={it.photo} className="image"></img>
-                        <h2 className="h3">{it.info} </h2>
-                        <Link to={`/details/${it.name}`} state={location.state} className="details" id="major_div">Some Detalis</Link>
+                        <h2 className="h3">{it.name} </h2>
+                        <Link to={`/details/${it.info}`} state={location.state} className="details" id="major_div">Read More</Link>
                     </div>
                 )
             })}
-            <button className='details_link' onClick={() => props.sign(data)}>Sign To This Major</button>
+            
         </div>
     )
 

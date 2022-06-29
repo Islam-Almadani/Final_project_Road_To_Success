@@ -58,10 +58,11 @@ body {
   width: 50px;
 }
 
-#icons{
+#icons {
   width: 50px;
   height: inherit;
 }
+
 nav {
   display: flex;
   align-items: center;
@@ -156,6 +157,7 @@ nav {
   border: 3px solid rgb(0, 0, 0);
   border-radius: 10px;
   margin-left: 10%;
+  margin-top: 18px;
 }
 
 .Profile_pic {
@@ -213,8 +215,8 @@ li {
 
 #Nav-image {
   width: 80px;
-    height: inherit;
-    margin-left: 20px;
+  height: inherit;
+  margin-left: 20px;
 }
 
 .Header {
@@ -413,20 +415,20 @@ hr {
 }
 
 .details_link {
+  display: flex;
   border-width: 10px;
   background-color: #096387;
   color: white;
   border: 2px solid #096387;
   padding: 10px 20px;
-  text-align: center;
   text-decoration: none;
-  display: inline-block;
   border-radius: 5px;
   transition-duration: 0.3s;
   text-align: center;
-  margin-left: 46%;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  margin-left: 43%;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  font-size: 18px;
 }
 
 .details_link:hover {
@@ -513,4 +515,118 @@ Link {
 #Tutorial_link {
   margin-left: 44%;
   font-size: 20px;
+  display: inline;
+}
+
+.video {
+  width: 80%;
+  height: 550px;
+}
+
+.form {
+  border-radius: 5px;
+  margin-bottom: 0px;
+  width: 80%;
+}
+
+
+
+#submit {
+  margin-left: 46%;
+}
+
+.about-img {
+  width: 40%;
+  margin-right: 20px;
+}
+
+
+.about-p {
+  text-align: justify;
+  color: #096387;
+  font-size: 20px;
+}
+
+.about-div {
+  /* margin-left: 10%; */
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-top: 40px;
+
+}
+
+#about-link {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: inline;
+  background-color: #096387;
+  color: white;
+  border: #096387 3px solid;
+  font-size: 25px;
+  border-radius: 10px;
+  padding: 2px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#about-link:hover {
+  background-color: white;
+  color: #096387;
+  font-weight: bold;
+  /* font-size: 23px; */
+}
+
+.sign-div {
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__label {
+  display: flex;
+  margin-bottom: 70px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #096387;
+}
+
+.form__input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #096387;
+}
+
+.divv {
+  display: flex;
+
+}
+
+#sign-div1 {
+  margin-left: 50px;
+}
+
+.labels {
+  width: 500px;
+}
+
+#sign-link {
+  margin-bottom: 10px;
+  display: inline;
+  background-color: #096387;
+  color: white;
+  border: #096387 3px solid;
+  font-size: 25px;
+  border-radius: 10px;
+  padding: 2px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#sign-link:hover {
+  background-color: white;
+  color: #096387;
+  font-weight: bold;
 }

@@ -15,6 +15,8 @@ import Qualification from './Profile_Buttons/Qualification';
 import Signed from './Profile_Buttons/Signed';
 import Contact from './Profile_Buttons/Contact';
 import Tutorial from './FiveDetails/Tutorial';
+import About from './pages/About';
+import SignUp from './pages/SignUp';
 import { useState } from 'react';
 
 import {
@@ -48,6 +50,8 @@ function App() {
         <Route path="/profile/signed" element={<Signed name={data}/>}></Route>
         <Route path="/profile/qualification" element={<Qualification/>}></Route>
         <Route path="/cooking/:name" element={<Tutorial/>}></Route>
+        <Route path="/" element={<About/>}></Route>
+        <Route path="/signup" element={<SignUp/>}></Route>
       </Routes>
     </Router>
   );

@@ -2,6 +2,10 @@ import { Component } from "react";
 import React from "react";
 import '../App.css'
 import { Link } from "react-router-dom";
+import { db } from "../Firebase/Auth";
+import { onSnapshot, collection } from "firebase/firestore";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+
 
 function Cooking() {
     const tutorial = [
@@ -14,15 +18,24 @@ function Cooking() {
         { Name: '7 Easy Ramadan Desserts', photo: " https://scontent.xx.fbcdn.net/v/t1.15752-9/289728752_588080452656773_2468382509784854018_n.png?_nc_cat=107&ccb=1-7&_nc_sid=aee45a&_nc_ohc=ZPUyNA1WKIoAX9W9vRe&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVJoTyabupNn3tzPOqEi0o5uow8LV2DcQBH1gBWXKbvoUQ&oe=62DC145D ", Details: "7 easy ramadan dessert recipes, if you are looking for ramadan dessert recipes ideas, you have come to the right place. Here I gathered 7 easy dessert recipes for iftar, some of them are traditional ramadan recipes and some of them modern dessert recipes that many people prefer. These ramadan sweets and treats are must try recipes during the fasting month.", Video: "https://youtu.be/D-BbX-E8fDQ" },
         { Name: '8 Healthy Sandwiches and Wraps ', photo: "https://scontent.xx.fbcdn.net/v/t1.15752-9/290012611_1845429572490353_9160191563652008798_n.png?_nc_cat=109&ccb=1-7&_nc_sid=aee45a&_nc_ohc=2R03jhPI3IQAX-xpTP7&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVKOsiV9AmTfuPfJaTUHy9SEbLcPXnDW7GhXJaHodllQsQ&oe=62DC0987  ", Details: " 8 healthy sandwich and wrap recipe that you cake make in a few minutes of work. Perfect meal for school, work, picnics and trips. If you are looking for healthy sandwich recipes to make for your kinds and family, these are the ideal solution. ", Video: "https://youtu.be/d2-6_kcTODM" }
     ];
+    const [recipes, setRecipes] = React.useState([]);
+    React.useEffect(
+      () =>
+        onSnapshot(collection(db, "CookingTutorial"), (snapshot) =>
+          setRecipes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        ),
+      []
+    );
     return (
         <div>
             <h1 className="Header">Cooking Tutorial</h1>
-            {tutorial.map((it) => {
+            <hr></hr>
+            {recipes.map((it) => {
                 return (
                     <div className='UniDiv' >
                         <img src={it.photo} className="image"></img>
-                        <h2 className="h3">{it.Name} </h2>
-                        <Link to={`/cooking/${it.Name}`} state={it} className="details">details</Link>
+                        <h2 className="h3">{it.name} </h2>
+                        <Link to={`/cooking/${it.name}`} state={it} className="details">details</Link>
                     </div>
                 )
             })}

@@ -3,12 +3,24 @@ import '../App.css'
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 import { useState } from "react";
+import { db } from "../Firebase/Auth";
+import { onSnapshot, collection } from "firebase/firestore";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+
 function Majors() {
     const location = useLocation()
     const [inputText, setinputText] = useState("")
     function change(e) {
         setinputText(e.target.value.toLowerCase())
     }
+    const [recipes, setRecipes] = React.useState([]);
+    React.useEffect(
+      () =>
+        onSnapshot(collection(db, "Majors"), (snapshot) =>
+          setRecipes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        ),
+      []
+    );
     const majors = [
         {
             major: 'Computer science', courses: [
@@ -80,9 +92,9 @@ function Majors() {
             major: 'Management', courses: [
                 { course: 'SAT',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Ftest-prep%2Fsat%3Ffbclid%3DIwAR2ifAOdJWwm7E3ocdYfrBvra_VThpN0yrRKMxLQV9_XGB_oy0u7qgS739w&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-1.fna.fbcdn.net/v/t1.15752-9/287715679_574253924040898_3893400773874829179_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u_QiLHPudSYAX9QYfFM&_nc_ht=scontent.fgza2-1.fna&oh=03_AVJ_08O0BydJLd_B0TvcaR8RvWOyyhY1JsL6zNcRL5Mt5w&oe=62CF9F66 " },
                 { course: 'Speaking English',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.oxfordonlineenglish.com%2Ffree-spoken-english-lessons%3Ffbclid%3DIwAR1f-iJM7wYD6yffuaWMiSULF9M_C-kIXD1wMqzpHNJDw0pjEenGzc5SMa8&h=AT2qojdErcX6p8nAla_zXDXRXu9HMGHeI9lXYnNjul7FZOXLKN1HgJyhBjC1RjQM2DLC3FZYu4jLe2atNY1Qqru7IkzQX0ok7DKQ8xHKN11Rk9ZUyKWA2f6tZaQutruqDneWuSlD54kWdYY" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/288684316_1169236860328839_4546308071862114335_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DqG_47J5PSkAX-NCKmN&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ8HTfIHE4p571nlE6CbeP6kEwDIPLolet0pejomwWRZA&oe=62D0C610" },
-                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q" ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
+                { course: 'TOFEL',link : "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.ets.org%2Ftoefl%2Ftest-takers%2Fibt%2Fprepare%3Ffbclid%3DIwAR2ERkx3TZNkqsVokUQsD87Yoo5A_GV_KBOE9moywHIZvktz7tLE5o9GQNU&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q " ,photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287289651_569939831170704_6421095855177622320_n.png?stp=dst-png_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=H-FIDF0bDDUAX8zcxme&_nc_ht=scontent.fgza2-3.fna&oh=03_AVK4_8TF8BNiWDDHdQGLsyoqctwLoNohiKPcHC4_5TvnsQ&oe=62D0CC50" },
                 { course: 'Maths',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.khanacademy.org%2Fmath%3Ffbclid%3DIwAR2qatznPLw8_CCnxGGAz3jgdhoEhsVFbypbe4Yj9OAemLYn4LRTG1twmGk&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/277030846_1160706508011981_6274281590660679808_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=V9o1zNLiXUoAX9fsjes&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJ6_Zp8ZId0PvRiQ2Rp47d8GCWpt8pHdDgg_7YNsfDjHg&oe=62D0FEAD" },
-                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q",link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
+                { course: 'Interview prep',link:"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.coursera.org%2Fcourses%3Fquery%3Dinterview%26fbclid%3DIwAR3erlIIy5xN0YB47j0-711tqOK5-Ii4twNoQwCQRIwqMtt9qaFPPZV4StQ&h=AT0XViRbgKf36cEoX4esiSuFxTH-KU2ozjEHaErbeHH1v2NqRhYXigR3PkRVETLRpRpMmDwWqXwKIrDJxFWV4btZ_vL60yCZcybkR3-ErnmeOfxNVdJ5KEK805J8-Q", photo: "https://scontent.fgza2-3.fna.fbcdn.net/v/t1.15752-9/287367218_396630539160023_3373241427460083586_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=WAbaguS4unkAX8qZDM2&_nc_ht=scontent.fgza2-3.fna&oh=03_AVJt_vUR7mv3PzI3QsbyjwvTgy5s0YEOJXID2aYZI4f6Xw&oe=62D00802" },
             ], photo: "https://previews.123rf.com/images/garagestock/garagestock1608/garagestock160807269/61461074-business-management-chart-with-keywords-and-icons-sketch.jpg"
         },
         {
@@ -95,7 +107,7 @@ function Majors() {
             ], photo: "https://www.neuron-eranet.eu/wp-content/uploads/brain-AS_metamoreworks-209172059-400.jpg"
         }
     ];
-    const filteredData = majors.filter((el) => {
+    const filteredData = recipes.filter((el) => {
         if (inputText === '') {
             return el;
         }
@@ -107,7 +119,7 @@ function Majors() {
 
     return (
         <div>
-            <h1 className="Header">{location.state.University}</h1>
+            <h1 className="Header">{location.state.university}</h1>
             <input
                 id="outlined-basic"
                 onChange={change}
@@ -119,13 +131,13 @@ function Majors() {
             />
 
             {filteredData.map((it) => {
-                const state1 = { majors: it, university: location.state.University }
+                const data = { majors: it , university: location.state.university }
 
                 return (
                     <div className='UniDiv' >
                         <img src={it.photo} className="image"></img>
                         <h2 className="h3">{it.major} </h2>
-                        <Link to={'/details'} state={state1} className="details" id="major_div">Some Details</Link>
+                        <Link to={'/details'} state={data} className="details" id="major_div">Read More</Link>
                     </div>
                 )
             })}
